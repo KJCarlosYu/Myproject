@@ -11,6 +11,17 @@ import optuna
 import joblib
 from PIL import Image
 import os
+def set_custom_theme():
+    custom_theme = """
+    [theme]
+    primaryColor="#22333b"
+    backgroundColor="#eae0d5"
+    secondaryBackgroundColor="#c6ac8f"
+    textColor="#0a0908"
+    font="serif"
+    """
+    st.markdown(f'<style>{custom_theme}</style>', unsafe_allow_html=True)
+set_custom_theme()
 
 # Interface
 st.sidebar.title('Category')
