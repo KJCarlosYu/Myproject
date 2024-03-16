@@ -46,8 +46,6 @@ if selection == 'Conclusions':
     st.markdown("- Moreover, consider introducing promotions or discounts tailored for spring to incentivize user engagement and boost bike utilization rates.")
     st.markdown("- Additionally, during spring, as temperatures rise and humidity increases, it's crucial to conduct maintenance on bike components susceptible to weather-related damage. By reducing bike supply during this period, potential losses can be minimized.")
 
-
-
 # Data Exploration
 elif selection == 'Technical Report':
     st.title('Technical Report')
