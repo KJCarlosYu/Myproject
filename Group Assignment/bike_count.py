@@ -8,26 +8,15 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-from scipy.stats import zscore
 
 #regression
-from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.svm import SVR
-from xgboost import XGBRegressor
-
 #model preprocessing
 from sklearn.preprocessing import OneHotEncoder
 
 #model selection
-from sklearn.model_selection import train_test_split,cross_validate
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
-
-#evaluation metrics
-from sklearn.metrics import mean_squared_log_error,mean_squared_error, r2_score,mean_absolute_error # for regression
-from sklearn.model_selection import cross_val_score #for optuna
 
 #optuna
 import optuna
@@ -38,7 +27,7 @@ import matplotlib.pyplot as plt
 # Interface
 st.sidebar.title('Category')
 selection = st.sidebar.radio('Go to', ['Home','Conclusions', 'Technical Report','Simulator'])
-bike_model = joblib.load("./bike_model.pkl")
+bike_model = joblib.load("bike_model.pkl")
 if selection == 'Home':
     st.title("Prediction App")
     st.header("Overview - Prediction of the total number of bicycle users on an hourly basis")
