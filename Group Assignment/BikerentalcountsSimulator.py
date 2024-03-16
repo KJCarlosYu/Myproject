@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import streamlit as st
 from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder
 import numpy as np
@@ -8,21 +7,13 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-
-#regression
 from sklearn.tree import DecisionTreeRegressor
-#model preprocessing
-from sklearn.preprocessing import OneHotEncoder
-
-#model selection
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
-
-#optuna
 import optuna
 import joblib
 from PIL import Image
-import matplotlib.pyplot as plt
+
 
 # Interface
 st.sidebar.title('Category')
@@ -222,14 +213,9 @@ elif selection == 'Simulator':
             plt.ylabel('Predicted Count')
             plt.title('Predicted Count vs. Hour')
             plt.xlim(0, 24)
-            
             print(st.line_chart(data=predictions, color=None, width=400, height=300, use_container_width=True))
-            #st.pyplot(plt)
+
         else:
             y_pred = bike_model.predict(X_scaled)
             output = pd.DataFrame({"Number of bikes rented":[int(y_pred)]})
             st.markdown(f"Number of bikes rented is {output}", unsafe_allow_html=True)
- #['yr', 'mnth', 'hr', 'holiday', 'weekday', 'workingday', 'temp', 'atemp',
-        #   'hum', 'windspeed', 'rush_hr', 'season_1', 'season_2', 'season_3',
-        #   'season_4', 'weathersit_1', 'weathersit_2', 'weathersit_3',
-        #   'weathersit_4']
