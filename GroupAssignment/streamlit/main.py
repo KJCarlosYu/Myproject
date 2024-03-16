@@ -10,12 +10,14 @@ from sklearn.model_selection import GridSearchCV
 import optuna
 import joblib
 from PIL import Image
-
+import os
 
 # Interface
 st.sidebar.title('Category')
 selection = st.sidebar.radio('Go to', ['Home','Conclusions', 'Technical Report','Simulator'])
-bike_model = joblib.load("bike_model.pkl")
+current_path = os.path.abspath(__file__)
+model_path = os.path.join(os.path.dirname(current_path), "bike_model.pkl")
+bike_model = joblib.load(model_path)
 if selection == 'Home':
     st.title("Prediction App")
     st.header("Overview - Prediction of the total number of bicycle users on an hourly basis")
