@@ -15,7 +15,7 @@ from PIL import Image
 # Interface
 st.sidebar.title('Category')
 selection = st.sidebar.radio('Go to', ['Home','Conclusions', 'Technical Report','Simulator'])
-bike_model = joblib.load("bike_model.pkl")
+bike_model = joblib.load("./bike_model.pkl")
 if selection == 'Home':
     st.title("Prediction App")
     st.header("Overview - Prediction of the total number of bicycle users on an hourly basis")
