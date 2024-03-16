@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
+import sklearn
 from sklearn.preprocessing import OneHotEncoder
 import seaborn as sns
 import matplotlib.pyplot as plt
-import sklearn
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
