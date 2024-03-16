@@ -213,9 +213,9 @@ elif selection == 'Simulator':
             plt.ylabel('Predicted Count')
             plt.title('Predicted Count vs. Hour')
             plt.xlim(0, 24)
-            print(st.line_chart(data=predictions, color=None, width=400, height=300, use_container_width=True))
+            st.line_chart(data=predictions, color=None, width=400, height=300, use_container_width=True)
 
         else:
             y_pred = bike_model.predict(X_scaled)
             output = pd.DataFrame({"Number of bikes rented":[int(y_pred)]})
-            st.markdown(f"Number of bikes rented is {output}", unsafe_allow_html=True)
+            output
