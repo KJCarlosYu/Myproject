@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder
 import seaborn as sns
 import matplotlib.pyplot as plt
+import sklearn
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
@@ -63,12 +64,12 @@ elif selection == 'Technical Report':
         tab1, tab2 = st.tabs(["Univariate Analysis", "Bivariate Analysis"])
         tab1.markdown("In the presented visualization, we opted to focus solely on the distribution analysis of key variables, namely *workingday, temperature, felt temperature, humidity*, and *wind speed*. This decision was informed by the observed correlation among date-related features, which led us to prioritize these specific factors for our analysis.")
         tab1.markdown("We observe that the dataset exhibits centered values, with occurrences of extreme weather being infrequent. This suggests a smaller dataset available for predicting outcomes under such extreme weather conditions. Consequently, it's likely that the model's performance may degrade when confronted with inputs corresponding to extreme weather conditions.")
-        tab1.image("https://github.com/KJCarlosYu/Myproject/blob/main/Group%20Assignment/streamlit/output.png?raw=true", use_column_width=True)
+        tab1.image("https://github.com/KJCarlosYu/Myproject/blob/main/GroupAssignment/streamlit/output.png?raw=true", use_column_width=True)
         tab2.markdown("Here, we analyze the bike rental counts from two distinct perspectives: seasonal variations and hourly patterns.")
         tab2.markdown("In this visualization, it's evident that on working days, there's a notable increase in bike rentals during rush hours, specifically between 7 to 9 in the morning and 17 to 19 in the evening. Conversely, on non-working days, the trend appears smoother, with bike rentals peaking between 10 to 20, indicating a more evenly distributed usage pattern throughout the day.")
-        tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/Group%20Assignment/streamlit/count_hour.png?raw=true", use_column_width=True)
+        tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/GroupAssignment/streamlit/count_hour.png?raw=true", use_column_width=True)
         tab2.markdown("In this chart, we depicted the bike rental counts categorized by hours and seasons, revealing a significant disparity among the seasons. Notably, autumn (season 3) exhibits the highest rental counts, while spring (season 1) registers the lowest.")
-        tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/Group%20Assignment/streamlit/season.png?raw=true", use_column_width=True)
+        tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/GroupAssignment/streamlit/season.png?raw=true", use_column_width=True)
     with st.expander("Feature Engineering"):
         tab1, tab2 = st.tabs(["New variables", "One-hot Encoding"])
         tab1.markdown("**rush_hr**: We've introduced a new variable, *rush_hr*, specifically tailored for working days, encompassing the timeframes from 7 to 9 in the morning and from 17 to 19 in the evening.")
@@ -97,7 +98,7 @@ elif selection == 'Technical Report':
         tab2.write("#### Model Evaluation Results")
         tab2.write(df)
         image_path = "./model_plot.png"
-        tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/Group%20Assignment/streamlit/model_plot.png?raw=true", use_column_width=True)
+        tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/GroupAssignment/streamlit/model_plot.png?raw=true", use_column_width=True)
         feature_names = ['mnth', 'hr', 'holiday', 'weekday', 'workingday', 'temp', 'atemp',
                  'hum', 'windspeed','rush_hr','season_1', 'season_2', 'season_3',
                  'season_4', 'weathersit_1', 'weathersit_2', 'weathersit_3',
