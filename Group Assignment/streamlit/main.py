@@ -2,11 +2,8 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder
-import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-import plotly.express as px
-import plotly.graph_objects as go
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
@@ -64,8 +61,6 @@ elif selection == 'Technical Report':
         st.markdown("We excluded the year column due to its limited information content. The remaining features have been verified to possess appropriate data types and are prepared for further analysis.")
     with st.expander("Analysis"):
         tab1, tab2 = st.tabs(["Univariate Analysis", "Bivariate Analysis"])
-        desired_width = 500
-        desired_height = 500
         tab1.markdown("In the presented visualization, we opted to focus solely on the distribution analysis of key variables, namely *workingday, temperature, felt temperature, humidity*, and *wind speed*. This decision was informed by the observed correlation among date-related features, which led us to prioritize these specific factors for our analysis.")
         tab1.markdown("We observe that the dataset exhibits centered values, with occurrences of extreme weather being infrequent. This suggests a smaller dataset available for predicting outcomes under such extreme weather conditions. Consequently, it's likely that the model's performance may degrade when confronted with inputs corresponding to extreme weather conditions.")
         tab1.image("https://github.com/KJCarlosYu/Myproject/blob/main/Group%20Assignment/streamlit/output.png?raw=true", use_column_width=True)
@@ -127,7 +122,6 @@ elif selection == 'Simulator':
     st.markdown("- You can get predictions for a whole day by not selecting a specific hour, while inputting a specific hour will yield a numerical value.")
     st.markdown("- The model's accuracy may decrease during extreme weather conditions.")
     st.markdown("- The model can automatically extract data such as the day of the week, working day, holiday, season, etc., based on the date you input, eliminating the need for manual input of each variable.")
-    #with st.expander("See explanation"):
     with st.form(key='form'):
         weathersit_options = {
         1: 'Clear, Few clouds, Partly cloudy, Partly cloudy',
