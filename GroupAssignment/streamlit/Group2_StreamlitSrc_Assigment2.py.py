@@ -109,8 +109,8 @@ elif selection == 'Technical Report':
 
         # Plot using Streamlit
         tab2.write("#### Feature Importance of the Best Model")
-        fig, ax = plt.subplots(figsize=(10, 6), facecolor='#EAE0D5')  # Set the background color for the figure
-        ax.set_facecolor('#EAE0D5')  # Set the background color for the plot area
+        fig, ax = plt.subplots(figsize=(10, 6))  # Set the background color for the figure
+        # Set the background color for the plot area
         ax.bar(df['Feature'], df['Feature Importance'])
         ax.set_xlabel('Feature')
         ax.set_ylabel('Feature Importance')
