@@ -11,17 +11,6 @@ import optuna
 import joblib
 from PIL import Image
 import os
-def set_custom_theme():
-    custom_theme = """
-    [theme]
-    primaryColor="#22333b"
-    backgroundColor="#eae0d5"
-    secondaryBackgroundColor="#c6ac8f"
-    textColor="#0a0908"
-    font="serif"
-    """
-    st.markdown(f'<style>{custom_theme}</style>', unsafe_allow_html=True)
-set_custom_theme()
 
 # Interface
 st.sidebar.title('Category')
@@ -57,7 +46,7 @@ if selection == 'Conclusions':
     st.markdown("- Moreover, consider introducing promotions or discounts tailored for spring to incentivize user engagement and boost bike utilization rates.")
     st.markdown("- Additionally, during spring, as temperatures rise and humidity increases, it's crucial to conduct maintenance on bike components susceptible to weather-related damage. By reducing bike supply during this period, potential losses can be minimized.")
 
-# Data Exploration
+# Technical report
 elif selection == 'Technical Report':
     st.title('Technical Report')
     st.write("This page serves as a comprehensive technical report covering various aspects of the project, including data quality checks, data analysis, feature engineering, and model development. It provides insights into how abnormal data is identified and handled, details about the hyperparameters used for model training, and an evaluation of the model's performance. Additionally, it offers a deep dive into the methodologies employed to optimize the model and ensure its efficacy in predicting bike rental demand accurately.")
@@ -109,24 +98,28 @@ elif selection == 'Technical Report':
         tab2.write(df)
         image_path = "./model_plot.png"
         tab2.image("https://github.com/KJCarlosYu/Myproject/blob/main/GroupAssignment/streamlit/model_plot.png?raw=true", use_column_width=True)
+# Plot the feature importances
         feature_names = ['mnth', 'hr', 'holiday', 'weekday', 'workingday', 'temp', 'atemp',
                  'hum', 'windspeed','rush_hr','season_1', 'season_2', 'season_3',
                  'season_4', 'weathersit_1', 'weathersit_2', 'weathersit_3',
                  'weathersit_4']
-# Plot the feature importances
         feature_importances = bike_model.feature_importances_
+        data = {'Feature': feature_names, 'Feature Importance': feature_importances}
+        df = pd.DataFrame(data)
+
+        # Plot using Streamlit
+        tab2.write("#### Feature Importance of the Best Model")
         fig, ax = plt.subplots(figsize=(10, 6), facecolor='#EAE0D5')  # Set the background color for the figure
         ax.set_facecolor('#EAE0D5')  # Set the background color for the plot area
-        ax.bar(feature_names, feature_importances)
+        ax.bar(df['Feature'], df['Feature Importance'])
         ax.set_xlabel('Feature')
         ax.set_ylabel('Feature Importance')
         ax.set_title('Feature Importance of the Best Model')
         plt.xticks(rotation=45)
-        plt.show()
         tab2.write("Here, we've visualized the most influential features for our prediction. It's evident that *hour* stands out as the most significant feature among all.")
         tab2.pyplot(fig)
 
-# Model Prediction Page
+# Simulator
 elif selection == 'Simulator':
     st.title('Bike rental counts Simulator')
     st.write('On this page, you can make predictions for bike rental counts by inputting data. Here are a few pointers:')
@@ -155,7 +148,6 @@ elif selection == 'Simulator':
             break
         submit_button = st.form_submit_button(label="Submit")
 
-# Prediction
     if submit_button:
         # Extract date
         def parse_date(date):
