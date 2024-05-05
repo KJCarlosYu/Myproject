@@ -1,0 +1,1 @@
+The fair price project is a group assignment. It contains various questions about math.

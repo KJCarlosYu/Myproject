@@ -1,0 +1,1 @@
+Here's the python notebook that i use for practising leetcode. (probably not the most efficient way but they count as part of the mind training and my own way of thinking)
