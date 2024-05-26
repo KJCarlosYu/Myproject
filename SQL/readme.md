@@ -1,0 +1,1 @@
+This is a project that includes building the relations between the entities people, car and house.
